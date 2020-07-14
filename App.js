@@ -11,7 +11,7 @@ const navigator = createStackNavigator(
     CustomJoke: CustomJokeScreen,
   },
   {
-    initialRoute: 'Index',
+    initialRouteName: 'Index',
     defaultNavigationOptions: {
       title: 'Chuck Norris Truths'
     }
