@@ -1,12 +1,13 @@
 import React, { useContext, useEffect } from 'react'
-import { View, Text, StyleSheet, Button, Image } from 'react-native'
+import {View, Text, StyleSheet, Button, Image, FlatList} from 'react-native'
 import { Context } from '../context/JokeContext';
 
 const IndexScreen = ({ navigation }) => {
-  const { state, getJokeById } = useContext(Context)
+  const { state, getJokeById, getRandomJokes } = useContext(Context)
 
   useEffect(() => {
     getJokeById(498)
+    getRandomJokes()
   }, [])
   // componentDidMount, DidUpdate, WillUnmount
 
@@ -18,6 +19,17 @@ const IndexScreen = ({ navigation }) => {
         title='Become the joke!'
         onPress={() => navigation.navigate('CustomJoke')}
       />
+      <FlatList
+        data={state.randomJokes}
+        keyExtractor={(joke) => `${joke.id}`}
+        renderItem={({ item }) => {
+          return (
+            <View>
+              <Text style={styles.text}>{item.joke}</Text>
+            </View>
+          )
+        }}
+      />
     </View>
   )
 }
@@ -28,6 +40,13 @@ const styles = StyleSheet.create({
     height: 40,
     paddingVertical: 36,
     paddingHorizontal: 8,
+  },
+  text: {
+    fontSize: 16,
+    padding: 8,
+  },
+  image: {
+    height: 250,
   },
 })
 
