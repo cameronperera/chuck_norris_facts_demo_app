@@ -16,7 +16,7 @@ const IndexScreen = ({ navigation }) => {
       <Image style={styles.image} source={{ uri: 'https://images02.military.com/sites/default/files/media/veteran-jobs/content-images/2016/03/chucknorris.jpg'}} />
       <Text style={styles.title}>{state.jokeOfTheDay && state.jokeOfTheDay.joke}</Text>
       <Button
-        title='Become the joke!'
+        title='Become the Joke!!!'
         onPress={() => navigation.navigate('CustomJoke')}
       />
       <FlatList
